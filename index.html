@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="misPelisSeriesApp" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<!--modulos-->
+	<script src="https://code.angularjs.org/1.5.0/angular-route.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-route-segment/1.4.0/angular-route-segment.min.js"></script>
+	<script src="scripts/app.js"></script>
+	<script src="scripts/controllers/PeliculasCtrl.js"></script>
+	<script src="scripts/controllers/SeriesCtrl.js"></script>
+	<script src="scripts/controllers/NavegacionCtrl.js"></script>
+	<script src="scripts/controllers/SeriesEmisionCtrl.js"></script>
+	<script src="scripts/controllers/SeriesHoyCtrl.js"></script>
+	<script src="scripts/controllers/PeliculasCarteleraCtrl.js"></script>
+	<script src="scripts/controllers/PeliculasProximamenteCtrl.js"></script>
+
+
+	
+
+	
+</head>
+<body>
+
+<div class="container">
+	<header><h1>Peliculas y series</h1></header>
+	<nav ng-controller="NavegacionCtrl">
+		<ul class="nav nav-tabs" >
+			<li ng-class="{'active':rutaEsPeliculas()}"><a href="#/peliculas">Home</a></li>
+			<li ng-class="{'active':rutaEsSeries()}"><a href="#/series">Series</a></li>
+		</ul>
+	</nav>
+	<section app-view-segment="0"></section>	
+</div>
+
+
+
+
+	
+</body>
+</html>
