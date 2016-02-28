@@ -1,7 +1,11 @@
-<table class="table table-stripped">
+<table class="table table-striped">
 	<tbody>
-		<tr ng-repeat="pelicula in peliculas">
-			<td>{{pelicula.title}}</td>
+		<tr ng-repeat="pelicula in peliculas | orderBy:'release_date'">
+			<td><img class="img-thumbnail" ng-src="{{rutaImagen(pelicula.poster_path)}}" alt=""/></td>
+			<td>
+				<a href="" ng-click="verdetalle(pelicula.id)"></a>
+			{{pelicula.title}}</td>
+			<td>{{pelicula.release_date | date : 'dd/MM/yyyy' }}</td>
 		</tr>
 	</tbody>
 </table>

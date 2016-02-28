@@ -1,9 +1,22 @@
-angular.module("misPelisSeries").services("ApiService",["$http",function($http){
+angular.module("misPelisSeriesApp").service("ApiService",["$http","configuracion",function($http,configuracion){
+
+//uso .this para acceder desde cualquier punto,sino no lo puedo llmar desde fuera como un public
 
 	this.consultaApi=function(servicio){
 
-		
-		return $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=ccaf7bb76ee50f227f4c7d1cb483d83d");
+		var url="https://api.themoviedb.org/"
+			+configuracion.apiVersion+"/"
+			+servicio+"?api_key="
+			+configuracion.apiKey;
+		return $http.get(url);
+	};
 
-	}
+
+	this.obtenerRutaImagen=function(tamanyo,ruta){
+
+		return ruta==null ?null :configuracion.rutaImagenApi+tamanyo+ruta;
+	};
+
 }]);
+
+

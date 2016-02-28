@@ -1,19 +1,10 @@
-angular.module("misPelisSeriesApp").controller("PeliculasCarteleraCtrl",["$scope","$http",function($scope,$http){
+angular.module("misPelisSeriesApp").controller("PeliculasCarteleraCtrl",["$scope","Peliculas","ApiService",function($scope,Peliculas,ApiService){
 
+			$scope.peliculas=Peliculas.data.results;
+				//ruta viene de la vista(backdrop path)
+			$scope.rutaImagen=function(ruta){
 
-	$http
-		.get("https://api.themoviedb.org/3/movie/now_playing?api_key=ccaf7bb76ee50f227f4c7d1cb483d83d")
-			.then(
-
-			function(resultado){
-			$scope.peliculas=resultado.data.results;
-
-			},function(){
-				alert('Algo no salio bien');
+				return ApiService.obtenerRutaImagen(45,ruta);
 			}
-		);
-
-
-
 
 }]);

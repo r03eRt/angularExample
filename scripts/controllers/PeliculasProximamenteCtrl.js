@@ -1,19 +1,18 @@
-angular.module("misPelisSeriesApp").controller("PeliculasProximamenteCtrl",["$scope","$http",function($scope,$http){
+angular.module("misPelisSeriesApp").controller("PeliculasProximamenteCtrl",
+	["$scope","$filter","Peliculas","ApiService","$location",function($scope,$filter,Peliculas,ApiService,$location){
+	$scope.peliculas=$filter('orderBy')(Peliculas.data.results,'release_date');
+	
+	//ruta viene de la vista(backdrop path)
+	$scope.rutaImagen=function(ruta){
 
+		return ApiService.obtenerRutaImagen(45,ruta);
+	}
 
-
-	$http
-		.get("https://api.themoviedb.org/3/movie/upcoming?api_key=ccaf7bb76ee50f227f4c7d1cb483d83d")
-			.then(
-
-			function(resultado){
-			$scope.peliculas=resultado.data.results;
-
-			},function(){
-				alert('Algo no salio bien');
-			}
-		);
-
+	$scope.verDetalle=function(id){
+		$location.path("/peliculas/detalles").search({
+			idPelicula:id
+		});
+	}
 
 
 }]);
